@@ -1,8 +1,9 @@
+#include "config.h"
+
 #include "common.h"
+#include "chunk.h"
 #include "debug.h"
 #include "vm.h"
-
-#include "chunk.h"
 
 int main(int argc, const char* argv[]) {
 	VM vm;

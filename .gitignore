@@ -95,3 +95,8 @@ dkms.conf
 
 
 # End of https://www.gitignore.io/api/c,autotools
+
+### Project-specific Rules
+config.*
+.deps/
+Makefile
