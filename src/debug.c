@@ -2,6 +2,7 @@
 #include "debug.h"
 
 #include <stdio.h>
+#include "value.h"
 
 static unsigned debug_inst_simple(const char* name, unsigned offset) {
 	printf("%s\n", name);
@@ -10,9 +11,7 @@ static unsigned debug_inst_simple(const char* name, unsigned offset) {
 
 static unsigned debug_inst_constant(const char* name, Chunk* chunk, unsigned offset) {
 	uint8_t constIdx = chunk->code[offset + 1];
-	printf("%-16s 0x%02X '", name, constIdx);
-	printValue(chunk->constants.values[constIdx]);
-	printf("'\n");
+	printf("%-16s 0x%02X '%g'\n", name, constIdx, chunk->constants.values[constIdx]);
 	return offset + 2;
 }
 
@@ -42,4 +41,12 @@ unsigned dbg_instr_disassemble(Chunk* chunk, unsigned offset) {
 		printf("Unknown opcode %d\n", instruction);
 		return offset + 1;
 	}
+}
+
+void dbg_stack_dump(VM* vm) {
+	printf("(%d) ", vm->stackTop - vm->stack);
+	for (Value* slot = vm->stack; slot < vm->stackTop; ++slot) {
+		printf("[%g]", *slot);
+	}
+	printf("\n");
 }

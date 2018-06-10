@@ -10,11 +10,11 @@ typedef struct {
 	Value* values;
 } ValueArray;
 
-void initValueArray(ValueArray* array);
+void value_array_init(ValueArray* array);
 
-void writeValueArray(ValueArray* array, Value value);
+void value_array_write(ValueArray* array, Value value);
 
-void freeValueArray(ValueArray* array);
+void value_array_free(ValueArray* array);
 
 /**
  * Prints the value.

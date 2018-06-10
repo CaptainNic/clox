@@ -9,7 +9,7 @@ void chunk_init(Chunk* chunk) {
 	chunk->capacity = 0;
 	chunk->code = NULL;
 	chunk->lines = NULL;
-	initValueArray(&chunk->constants);
+	value_array_init(&chunk->constants);
 }
 
 void chunk_write(Chunk* chunk, uint8_t byte, unsigned line) {
@@ -28,11 +28,11 @@ void chunk_write(Chunk* chunk, uint8_t byte, unsigned line) {
 void chunk_free(Chunk* chunk) {
 	FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
 	FREE_ARRAY(unsigned, chunk->lines, chunk->capacity);
-	freeValueArray(&chunk->constants);
+	value_array_free(&chunk->constants);
 	chunk_init(chunk);
 }
 
 unsigned chunk_const_add(Chunk* chunk, Value value) {
-	writeValueArray(&chunk->constants, value);
+	value_array_write(&chunk->constants, value);
 	return chunk->constants.count - 1;
 }
