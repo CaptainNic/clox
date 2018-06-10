@@ -5,7 +5,8 @@
             "intelliSenseMode": "clang-x64",
             "compilerPath": "C:/MinGW/bin/gcc.exe",
             "includePath": [
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/src",
+                "${workspaceFolder}"
             ],
             "defines": [],
             "browse": {

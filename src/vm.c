@@ -1,9 +1,11 @@
+#include "config.h"
+#include "vm.h"
+
 #include <stdio.h>
 #include "common.h"
 #if DBG_TRACE_EXECUTION
 #include "debug.h"
 #endif
-#include "vm.h"
 
 void vm_init(VM* vm) {
 

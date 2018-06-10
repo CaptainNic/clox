@@ -1,7 +1,8 @@
+#include "config.h"
+#include "memory.h"
+
 #include <stdlib.h>
 #include "common.h"
-
-#include "memory.h"
 
 void* reallocate(void* prev, size_t oldSize, size_t newSize) {
 	if (!newSize) {

@@ -1,6 +1,7 @@
-#include <stdio.h>
-
+#include "config.h"
 #include "debug.h"
+
+#include <stdio.h>
 
 static unsigned debug_inst_simple(const char* name, unsigned offset) {
 	printf("%s\n", name);

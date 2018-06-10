@@ -1,7 +1,8 @@
+#include "config.h"
+#include "value.h"
+
 #include <stdio.h>
 #include "memory.h"
-
-#include "value.h"
 
 void initValueArray(ValueArray* array) {
 	array->capacity = 0;
