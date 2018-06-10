@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include "value.h"
 
-static unsigned debug_inst_simple(const char* name, unsigned offset) {
+static unsigned dbg_inst_simple(const char* name, unsigned offset) {
 	printf("%s\n", name);
 	return offset + 1;
 }
 
-static unsigned debug_inst_constant(const char* name, Chunk* chunk, unsigned offset) {
+static unsigned dbg_inst_constant(const char* name, Chunk* chunk, unsigned offset) {
 	uint8_t constIdx = chunk->code[offset + 1];
 	printf("%-16s 0x%02X '%g'\n", name, constIdx, chunk->constants.values[constIdx]);
 	return offset + 2;
@@ -34,9 +34,19 @@ unsigned dbg_instr_disassemble(Chunk* chunk, unsigned offset) {
 	uint8_t instruction = chunk->code[offset];
 	switch (instruction) {
 	case OP_CONSTANT:
-		return debug_inst_constant("OP_CONSTANT", chunk, offset);
+		return dbg_inst_constant("OP_CONSTANT", chunk, offset);
+	case OP_ADD:
+		return dbg_inst_simple("OP_ADD", offset);
+	case OP_SUBTRACT:
+		return dbg_inst_simple("OP_SUBTRACT", offset);
+	case OP_MULTIPLY:
+		return dbg_inst_simple("OP_MULTIPLY", offset);
+	case OP_DIVIDE:
+		return dbg_inst_simple("OP_DIVIDE", offset);
+	case OP_NEGATE:
+		return dbg_inst_simple("OP_NEGATE", offset);
 	case OP_RETURN:
-		return debug_inst_simple("OP_RETURN", offset);
+		return dbg_inst_simple("OP_RETURN", offset);
 	default:
 		printf("Unknown opcode %d\n", instruction);
 		return offset + 1;

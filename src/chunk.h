@@ -4,7 +4,12 @@
 #include "value.h"
 
 typedef enum {
-	OP_CONSTANT,	// [ opcode8, constant_index8  ]
+	OP_CONSTANT,	// [ opcode8, constant_index8 ]
+	OP_ADD,			// [ opcode8 ]
+	OP_SUBTRACT,	// [ opcode8 ]
+	OP_MULTIPLY,	// [ opcode8 ]
+	OP_DIVIDE,		// [ opcode8 ]
+	OP_NEGATE,		// [ opcode8 ]
 	OP_RETURN		// [ opcode8 ]
 } OpCode;
 
