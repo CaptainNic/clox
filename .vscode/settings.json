@@ -2,6 +2,8 @@
     "files.associations": {
         "config.h": "c",
         "memory.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "common.h": "c",
+        "scanner.h": "c"
     }
 }

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "common.h"
+#include "compiler.h"
 #if DBG_TRACE_EXECUTION
 #include "debug.h"
 #endif
@@ -61,11 +62,9 @@ static InterpretResult vm_run(VM* vm) {
     #undef BINARY_OP
 }
 
-InterpretResult vm_interpret(VM* vm, Chunk* chunk) {
-    vm->chunk = chunk;
-    vm->ip = vm->chunk->code;
-
-    return vm_run(vm);
+InterpretResult vm_interpret(VM* vm, const char* source) {
+    compile(source);
+    return INTERPRET_OK;
 }
 
 //TODO: error handling
